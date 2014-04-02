@@ -84,7 +84,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\FileModel.cs" />
+    <Compile Include="Model\FolderItem.cs" />
     <Compile Include="Service\ErrorLoggingService.cs" />
     <Compile Include="Service\FileReadingException.cs" />
     <Compile Include="Service\FileReadingService.cs" />

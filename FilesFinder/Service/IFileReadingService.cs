@@ -12,7 +12,7 @@ namespace FilesFinder.Service
 	{
 		void Start(string dirPath);
 		void Stop();
-		BlockingCollection<FileModel> Files { get; }
-		BlockingCollection<FileModel> XmlFiles { get; }
+		BlockingCollection<FolderItem> Files { get; }
+		BlockingCollection<FolderItem> XmlFiles { get; }
 	}
 }

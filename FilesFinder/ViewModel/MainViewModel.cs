@@ -7,6 +7,8 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using System.Xml;
+using System.Xml.Serialization;
 using FilesFinder.Model;
 using FilesFinder.Service;
 using GalaSoft.MvvmLight;
@@ -19,11 +21,11 @@ namespace FilesFinder.ViewModel
 	{
 	    private readonly IErrorLoggingService _errorLoggingService;
 	    private readonly IFileReadingService _fileService;
-		private List<FileModel> _fileData;
+		private List<FolderItem> _fileData;
 	    private bool _isBusy;
 
 	    private string _folderPath;
-	    private FileModel _rootFileModel;
+	    private FolderItem _rootFolderItem;
 	    private ObservableCollection<string> _errors = new ObservableCollection<string>();
 
 	    public ObservableCollection<string> Errors {
@@ -34,16 +36,16 @@ namespace FilesFinder.ViewModel
 	        }
 	    }
 
-		public IEnumerable<FileModel> FileData {
-			get { return _fileData ?? (_fileData = new List<FileModel> {RootFileModel}); }
+		public IEnumerable<FolderItem> FileData {
+			get { return _fileData ?? (_fileData = new List<FolderItem> {RootFolderItem}); }
 		} 
 
-	    public FileModel RootFileModel
+	    public FolderItem RootFolderItem
 		{
-			get { return _rootFileModel; }
+			get { return _rootFolderItem; }
 			set {
-				_rootFileModel = value; 
-				RaisePropertyChanged("RootFileModel"); 
+				_rootFolderItem = value; 
+				RaisePropertyChanged("RootFolderItem"); 
 			}
 		}
 
@@ -111,23 +113,13 @@ namespace FilesFinder.ViewModel
 				}
 				finally
 				{
-					RaisePropertyChanged("RootFileModel");
+					RaisePropertyChanged("RootFolderItem");
 					RaisePropertyChanged("FileData");
 				}
 			});
 
 			//thread that writes folder's content info to the xml file
-			var xmlTask = Task.Factory.StartNew(() =>
-			{
-				try
-				{
-					WriteToXmlFile();
-				}
-				catch (Exception ex)
-				{
-					_errorLoggingService.LogError(ex.Message);
-				}
-			});
+			var xmlTask = Task.Factory.StartNew(WriteXmlDocument);
 
 			Task.Factory.StartNew(() => {
 				Task.WaitAll(treeTask, xmlTask);
@@ -136,54 +128,61 @@ namespace FilesFinder.ViewModel
 			});
 		}
 
-		private void WriteToXmlFile() {
+		private void WriteXmlDocument()
+		{
+			FolderItem rootModel = null;
+
+			//building a tree to serialize
+			try
+			{
+				while (true)
+				{
+					var curFileModel = _fileService.XmlFiles.Take();
+
+					var curFile = (curFileModel as FileFolderItem);
+					if (curFile != null) {
+						var info = new FileInfo(curFile.FilePath);
+
+						curFile.CreationTime = info.CreationTime.Date.ToString();
+						curFile.LastAccessTime = info.LastAccessTime.Date.ToString();
+						curFile.Length = info.Length.ToString();
+						curFile.Owner = File.GetAccessControl(curFileModel.FilePath)
+							.GetOwner(typeof (System.Security.Principal.NTAccount)).ToString();
+					}
+
+					if (curFileModel.Parent != null)
+					{
+						if (curFileModel.Parent.Children == null)
+							curFileModel.Parent.Children = new List<FolderItem>();
+						curFileModel.Parent.Children.Add(curFileModel);
+					}
+					else
+					{
+						rootModel = curFileModel;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				_errorLoggingService.LogError(ex.Message);
+			}
+
 			var filePath = String.IsNullOrEmpty(XmlFilePath) ? Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\FolderContents.xml" : XmlFilePath;
 
 			if (!File.Exists(filePath)) File.Create(filePath).Close();
-			var folderLine = "<Folder Name=\"{0}\">\n";
-			var folderClosingTag = "</Folder>\n";
-			var fileLine = "<File Name=\"{0}\" CreationDate=\"{1}\" LastAccessDate=\"{2}\" Size=\"{3}\" Owner=\"{4}\"/>\n ";
 
-			Func<FileModel, int> getFileIndent = (FileModel fM) => {
-				var n = 0;
-				while (fM.Parent != null) {
-					n++;
-					fM = fM.Parent;
+			var ser = new XmlSerializer(typeof(FolderItem));
+
+			using (var myWriter = new StreamWriter(filePath)) {
+				try {
+					ser.Serialize(myWriter, rootModel);
 				}
-				return n;
-			};
-
-			File.WriteAllText(filePath, "");
-
-			FileModel curParent = null;
-			var lastIndent = 0;
-			
-			while (true)
-			{
-				var curFileModel = _fileService.XmlFiles.Take();
-				var curFileIndent = getFileIndent(curFileModel);
-
-				if (curParent == null) 
+				catch (Exception ex) 
 				{
-					curParent = curFileModel;
+					_errorLoggingService.LogError(ex.Message);
 				}
-
-				if (curFileIndent < lastIndent) {
-					File.AppendAllText(filePath, new String('\t', getFileIndent(curParent)) + folderClosingTag);
-					curParent = curFileModel;
-				}
-
-				lastIndent = curFileIndent;
-
-				if (!curFileModel.IsFile) {
-					File.AppendAllText(filePath, new String('\t', getFileIndent(curFileModel)) + string.Format(folderLine, curFileModel.Name));
-				}
-				else {
-					var info = new FileInfo(curFileModel.FilePath);
-
-					File.AppendAllText(filePath, new String('\t', getFileIndent(curFileModel)) + string.Format(fileLine, 
-						curFileModel.Name, info.CreationTime, info.LastAccessTime, info.Length, 
-						File.GetAccessControl(curFileModel.FilePath).GetOwner(typeof(System.Security.Principal.NTAccount))));
+				finally {
+					myWriter.Close();
 				}
 			}
 		}
@@ -197,14 +196,14 @@ namespace FilesFinder.ViewModel
 
 				if (curFileModel.Parent != null) {
 					if (curFileModel.Parent.Children == null)
-						curFileModel.Parent.Children = new List<FileModel>();
+						curFileModel.Parent.Children = new List<FolderItem>();
 					curFileModel.Parent.Children.Add(curFileModel);
 				}
 				else {
-					_fileData = new List<FileModel> { (_rootFileModel = curFileModel) };
+					_fileData = new List<FolderItem> { (_rootFolderItem = curFileModel) };
 				}
 
-				RaisePropertyChanged("RootFileModel");
+				RaisePropertyChanged("RootFolderItem");
 				RaisePropertyChanged("FileData");
 			}
 		}
