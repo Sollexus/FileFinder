@@ -1,0 +1,54 @@
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\FilesFinder.exe.config
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\FilesFinder.exe
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\FilesFinder.pdb
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\FilesFinder.csprojResolveAssemblyReference.cache
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\MainWindow.baml
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\MainWindow.g.cs
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\App.g.cs
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\FilesFinder_MarkupCompile.cache
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\FilesFinder.g.resources
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\FilesFinder.Properties.Resources.resources
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\FilesFinder.csproj.GenerateResource.Cache
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\FilesFinder.exe
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\FilesFinder.pdb
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\FilesFinder_MarkupCompile.lref
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.Extras.WPF45.dll
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.WPF45.dll
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\System.Windows.Interactivity.dll
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.Extras.WPF45.pdb
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.Extras.WPF45.xml
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.WPF45.pdb
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.WPF45.xml
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\bin\Debug\System.Windows.Interactivity.xml
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\GeneratedInternalTypeHelper.g.cs
+c:\users\alexander.pluzhnikov\documents\visual studio 2012\Projects\FilesFinder\FilesFinder\obj\Debug\App.baml
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\FilesFinder.exe.config
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\FilesFinder.exe
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\FilesFinder.pdb
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\FilesFinder.exe
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\FilesFinder.pdb
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.Extras.WPF45.dll
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.WPF45.dll
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\System.Windows.Interactivity.dll
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.Extras.WPF45.pdb
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.Extras.WPF45.xml
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.WPF45.pdb
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\GalaSoft.MvvmLight.WPF45.xml
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+N:\Work\2014\FilesFinder\FilesFinder\bin\Debug\System.Windows.Interactivity.xml
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\MainWindow.g.cs
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\App.g.cs
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\GeneratedInternalTypeHelper.g.cs
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\FilesFinder_MarkupCompile.cache
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\FilesFinder_MarkupCompile.lref
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\App.baml
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\MainWindow.baml
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\FilesFinder.g.resources
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\FilesFinder.Properties.Resources.resources
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\FilesFinder.csproj.GenerateResource.Cache
+N:\Work\2014\FilesFinder\FilesFinder\obj\Debug\FilesFinder.csprojResolveAssemblyReference.cache

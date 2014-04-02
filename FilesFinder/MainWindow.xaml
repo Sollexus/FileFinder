@@ -1,0 +1,40 @@
+﻿<Window x:Class="FilesFinder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc ="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:FilesFinder.ViewModel"
+        xmlns:model="clr-namespace:FilesFinder.Model"
+        mc:Ignorable="d" 
+        Title="MainWindow" Height="350" Width="525" d:DataContext="{d:DesignInstance viewModel:MainViewModel}" 
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+        >
+    
+	<Window.Resources>
+		<HierarchicalDataTemplate x:Key="FilesTemplate" ItemsSource="{Binding Children}">
+			<TextBlock Text="{Binding Name}"></TextBlock>
+		</HierarchicalDataTemplate>
+	</Window.Resources>
+    
+	<Grid>
+		<DockPanel>
+			<DockPanel Height="25" DockPanel.Dock="Top">
+				<Label DockPanel.Dock="Left">File path:</Label>
+				<Button Command="{Binding Search}" DockPanel.Dock="Right" Margin="5,0,0,0" >Search</Button>
+				<Button DockPanel.Dock="Right" Margin="5,0,0,0" Click="LoadFile_Click">Choose folder...</Button>
+				<Button DockPanel.Dock="Right" Margin="5,0,0,0" Click="ChooseXmlFile_Click">Choose xml file...</Button>
+				<TextBox Text="{Binding FolderPath,  UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+			</DockPanel>
+            <ListBox DockPanel.Dock="Bottom" Height="100" ItemsSource="{Binding Errors}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+							<TextBlock Foreground="Red" Text="{Binding}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+			<TreeView DockPanel.Dock="Bottom" ItemsSource="{Binding FileData}" ItemTemplate="{StaticResource FilesTemplate}"></TreeView>
+		</DockPanel>
+	</Grid>
+</Window>
